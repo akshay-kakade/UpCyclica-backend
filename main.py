@@ -168,3 +168,11 @@ def delete_submission(submission_id: str, db: Session = Depends(get_db)):
     db.delete(submission)
     db.commit()
     return {"message": "Deleted successfully", "id": submission_id}
+
+from fastapi import FastAPI
+
+app = FastAPI()
+
+@app.get("/")
+def home():
+    return {"message": "🚀 FastAPI running on Railway"}
