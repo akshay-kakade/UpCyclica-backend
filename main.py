@@ -8,9 +8,16 @@ from fastapi.middleware.cors import CORSMiddleware
 from db import Base, engine, SessionLocal
 from models import WasteSubmission
 from uuid import uuid4
+from fastapi import HTTPException
+from fastapi import FastAPI
+
 
 app = FastAPI()
 
+
+@app.get("/")
+def home():
+    return {"message": "🚀 FastAPI running on Railway"}
 # ✅ Auto-create tables
 Base.metadata.create_all(bind=engine)
 
@@ -157,7 +164,6 @@ def cluster_by_type_source(user_id: Optional[str] = "mock_user_123", db: Session
 
     return grouped
 
-from fastapi import HTTPException
 
 @app.delete("/delete/{submission_id}")
 def delete_submission(submission_id: str, db: Session = Depends(get_db)):
@@ -169,10 +175,5 @@ def delete_submission(submission_id: str, db: Session = Depends(get_db)):
     db.commit()
     return {"message": "Deleted successfully", "id": submission_id}
 
-from fastapi import FastAPI
 
-app = FastAPI()
 
-@app.get("/")
-def home():
-    return {"message": "🚀 FastAPI running on Railway"}
