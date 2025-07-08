@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: upcyclica-api
+    runtime: python
+    buildCommand: ""
+    startCommand: uvicorn main:app --host=0.0.0.0 --port=10000
+    envVars:
+      - key: CLOUDINARY_API_KEY
+        value: 397176152197174
+      - key: OPENAI_API_KEY
+        fromEnv: true
+      - key: DATABASE_URL
+        value: postgresql://neondb_owner:npg_AfOlh4kTQ3Uy@ep-dawn-sun-ae9tlfag-pooler.c-2.us-east-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+    plan: free
