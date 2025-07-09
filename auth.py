@@ -4,7 +4,7 @@ import requests
 
 # Clerk Config
 CLERK_JWT_ISSUER = "https://trusting-ant-47.clerk.accounts.dev"
-CLERK_JWT_AUDIENCE = "http://localhost:3000"  # Use your actual frontend URL in prod
+CLERK_JWT_AUDIENCE = "upcyclica.vercel.app"  # Use your actual frontend URL in prod
 CLERK_JWT_KEY_URL = f"{CLERK_JWT_ISSUER}/.well-known/jwks.json"
 
 # Load JWKS from Clerk
